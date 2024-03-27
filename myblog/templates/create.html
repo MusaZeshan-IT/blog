@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %} Create {% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="text-center mt-2 mb-5">Create Post</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="alert alert-primary alert-dismissible" role="alert">
+            <div>
+                <i class="fa-solid fa-circle-info"></i>
+                <span class="info-message ms-1">Keep in mind that your username will be shown as the author of your post.</span>
+            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{userpost_form}}
+            <button class="btn btn-outline-success mt-3 w-25" type="submit">Create</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

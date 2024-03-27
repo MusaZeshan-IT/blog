@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %} Blog {% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="text-center mt-2 mb-5">Your Posts</h1>
+    </div>
+</div>
+<div class="row">
+    {% for post in userposts %}
+    <div class="col-md-4">
+        <div class="card m-2 user-post-card">
+            <div class="card-body">
+                <h4 class="card-title">{{post.post_title}}</h4>
+                <span class="fs-5 fst-italic">- {{post.post_author}}</span>
+                <p class="card-text">{{post.post_description | truncatechars:170 | safe}}</p>
+            </div>
+            <hr>
+            <div>
+                <a href="/blog/user_postdetails/{{post.post_slug}}">
+                    <button class="btn btn-outline-dark read-more-btn mb-1 px-4 ms-1">Read More</button>
+                </a>
+                <a href="/blog/edit/{{post.post_slug}}"><button class="btn btn-primary w-25 ms-3 mb-1">Edit</button></a>
+                <a href="/blog/delete/{{post.post_slug}}"><button class="btn btn-danger w-25 mb-1">Delete</button></a>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="mt-5">
+        <p class="fw-bold fs-5">Looks like your post collection is empty! Haven't started yet or tidied up? Begin your
+            creation now! Click below.</p>
+        <a href="/blog/create/"><button class="btn btn-outline-success px-5">Get started!</button></a>
+    </div>
+    {% endfor %}
+    <!-- <button class="btn btn-outline-success mt-3 w-25" type="submit">Save Changes</button> -->
+</div>
+</div>
+{% endblock %}

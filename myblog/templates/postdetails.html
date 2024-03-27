@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Post - {{post.post_title}}{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="text-center mt-2 mb-5">Post Details</h1>
+    </div>
+</div>
+<div class="row mt-3">
+    <div class="col-md-12">
+        <h3>{{post.post_title}}</h3>
+        <span class="fs-5 fst-italic">- {{post.post_author}}</span>
+        <p class="ms-1 mt-2">{{post.post_description | safe}}</p>
+        <a href="/blog/"><button type="button" class="btn btn-danger">Go Back</button></a>
+    </div>
+</div>
+{% endblock %}

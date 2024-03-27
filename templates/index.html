@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %} Home {% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="text-center mt-2 mb-5">Home Page</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        {% if messages %}
+            {% for message in messages %}
+                {% if message.tags == 'warning' %}
+                <div class="alert alert-warning" role="alert">
+                    <i class="fa-solid fa-triangle-exclamation fa-lg" style="color: #d1bc00;"></i>
+                    <span class="message ms-1">{{ message }}</span>
+                </div>
+                {% elif message.tags == 'info' %}
+                <div class="alert alert-info" role="alert">
+                    <i class="fa-solid fa-circle-info fa-lg"></i>
+                    <span class="message ms-1">{{ message }}</span>
+                </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

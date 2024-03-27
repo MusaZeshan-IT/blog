@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %} Blog {% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="text-center mt-2 mb-5">Blog Posts</h1>
+    </div>
+</div>
+
+<div class="row">
+    {% for post in blogposts %}
+    <div class="col-md-4">
+        <div class="card m-2 post-card">
+            <div class="card-body">
+                <h4 class="card-title">{{post.post_title}}</h4>
+                <span class="fs-5 fst-italic">- {{post.post_author}}</span>
+                <p class="card-text mt-2">{{post.post_description | truncatechars:170 | safe}}</p>
+                <a href="/blog/postdetails/{{post.post_slug}}" class="btn btn-primary">Read More</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
